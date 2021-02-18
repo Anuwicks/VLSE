@@ -12,6 +12,8 @@ import Container from "@material-ui/core/Container";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import { Route, Switch, useRouteMatch, withRouter } from "react-router-dom";
+import Home from "../views/Home";
 
 //reference for appbar template : https://material-ui.com/components/app-bar/
 function ElevationScroll(props) {
@@ -39,9 +41,10 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 };
 
-export default function ElevateAppBar(props) {
+function ElevateAppBar(props) {
+  let { path, url } = useRouteMatch();
   return (
-    <React.Fragment>
+    <div>
       <CssBaseline />
       <ElevationScroll {...props}>
         <AppBar style={{ backgroundColor: "#466185", opacity: 0.97 }}>
@@ -49,7 +52,7 @@ export default function ElevateAppBar(props) {
             <Grid container>
               <Grid
                 item
-                xs={4}
+                xs={5}
                 style={{
                   display: "flex",
                   flexDirection: "row",
@@ -61,16 +64,16 @@ export default function ElevateAppBar(props) {
                   component={Research}
                   style={{
                     fontSize: 44,
-                    color: "#fff",
-                    marginLeft: 30,
+                    color: "#233041",
+                    marginLeft: 80,
                     marginRight: 30,
                   }}
                 />
-                <Typography variant='h6'>
+                <Typography style={{ fontSize: 23 }}>
                   *Academic Research Group Name*
                 </Typography>
               </Grid>
-              <Grid item xs={2}></Grid>
+              <Grid item xs={1}></Grid>
               <Grid
                 item
                 xs={6}
@@ -84,13 +87,13 @@ export default function ElevateAppBar(props) {
                   color='inherit'
                   aria-label='large outlined primary button group'
                 >
-                  <Button>Home</Button>
-                  <Button>Projects</Button>
-                  <Button>Publications</Button>
-                  <Button>Team</Button>
-                  <Button>News</Button>
-                  <Button>Tools</Button>
-                  <Button>Vacancies</Button>
+                  <Button style={{ fontSize: 13 }}>Home</Button>
+                  <Button style={{ fontSize: 13 }}>Projects</Button>
+                  <Button style={{ fontSize: 13 }}>Publications</Button>
+                  <Button style={{ fontSize: 13 }}>Team</Button>
+                  <Button style={{ fontSize: 13 }}>News</Button>
+                  <Button style={{ fontSize: 13 }}>Tools</Button>
+                  <Button style={{ fontSize: 13 }}>Vacancies</Button>
                 </ButtonGroup>
               </Grid>
             </Grid>
@@ -98,18 +101,8 @@ export default function ElevateAppBar(props) {
         </AppBar>
       </ElevationScroll>
       <Toolbar />
-      <Container>
-        <Box my={2}>
-          {[...new Array(12)]
-            .map(
-              () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
-            )
-            .join("\n")}
-        </Box>
-      </Container>
-    </React.Fragment>
+    </div>
   );
 }
+
+export default withRouter(ElevateAppBar);

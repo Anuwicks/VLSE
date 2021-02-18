@@ -1,16 +1,16 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
-import Home from "./views/Home";
+import Appbar from "./layouts/Main";
 
 function App() {
   return (
     <div>
       <Switch>
-        <Route exact path='/' component={Home} />
+        <Route path='/' component={Appbar} />
       </Switch>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
