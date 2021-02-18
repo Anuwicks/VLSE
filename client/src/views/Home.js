@@ -95,7 +95,7 @@ export default function HomePage() {
               }}
             >
               {" "}
-              Our Work
+              What We Do
             </Typography>
             <img
               alt=''
@@ -175,50 +175,62 @@ export default function HomePage() {
             </Typography>
           </Card>
         </Grid>
-        <Typography align='justify'>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Cras mattis consectetur purus sit
-          amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-          quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Cras mattis consectetur purus sit
-          amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-          quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Cras mattis consectetur purus sit
-          amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-          quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Cras mattis consectetur purus sit
-          amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-          quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Cras mattis consectetur purus sit
-          amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-          quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
-          scelerisque nisl consectetur et. Cras mattis consectetur purus sit
-          amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-          quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-        </Typography>
+
+        <Grid item xs={12} style={{ padding: 50, paddingTop: 15 }}>
+          <Typography
+            style={{ marginBottom: 10, fontSize: 25, fontWeight: "bold" }}
+          >
+            {" "}
+            About us
+          </Typography>
+          <Typography align='justify'>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros. Praesent commodo cursus
+            magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+            vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+            nisl consectetur et. Cras mattis consectetur purus sit amet
+            fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+            quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros. Praesent commodo cursus
+            magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+            vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+            nisl consectetur et. Cras mattis consectetur purus sit amet
+            fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+            quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros. Praesent commodo cursus
+            magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+            vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+            nisl consectetur et. Cras mattis consectetur purus sit amet
+            fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+            quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+            ac consectetur ac, vestibulum at eros. Praesent commodo cursus
+            magna, vel scelerisque nisl consectetur et. Cras mattis consectetur
+            purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+            egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+            vestibulum at eros. Praesent commodo cursus magna, vel scelerisque
+            nisl consectetur et. Cras mattis consectetur purus sit amet
+            fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+            quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+          </Typography>
+        </Grid>
+        <Grid item xs={12}></Grid>
       </Grid>
     </div>
   );

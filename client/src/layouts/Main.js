@@ -3,7 +3,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Home from "../views/Home";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Appbar from "../components/AppBar";
-
+import Footer from "../components/Footer";
 import React from "react";
 
 function MainLayout(props) {
@@ -12,12 +12,20 @@ function MainLayout(props) {
       <CssBaseline />
       <Appbar />
 
-      <main style={{ marginLeft: 30, marginRight: 30, marginTop: 20 }}>
+      <main
+        style={{
+          marginLeft: 30,
+          marginRight: 30,
+          marginTop: 20,
+          minHeight: "100vh",
+        }}
+      >
         <Switch>
           <Route exact path={`/`} render={(props) => <Home />} />
           <Route exact path={`/home`} render={(props) => <Home />} />
         </Switch>
       </main>
+      <Footer />
     </div>
   );
 }
