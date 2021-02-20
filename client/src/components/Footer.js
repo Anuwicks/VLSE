@@ -16,11 +16,10 @@ function Footer(props) {
           justifyContent: "center",
           padding: 2,
           fontSize: 14,
-          borderTop: "1px solid #929292",
+          borderTop: "1px solid #dedede",
         }}
       >
-        Copyright &copy; {new Date().getFullYear()} - *Academic Research Group
-        Name*
+        Copyright &copy; {new Date().getFullYear()} - VLSE
       </Typography>
     </div>
   );

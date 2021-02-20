@@ -11,6 +11,35 @@ export default function HomePage() {
   return (
     <div>
       <Grid container>
+        <Grid item xs={12}>
+          <Typography
+            align='center'
+            style={{
+              fontSize: 28,
+              fontWeight: "bolder",
+              marginBottom: 30,
+              paddingBottom: 10,
+              color: "#a3a3a3",
+              borderBottom: "1px solid #dedede",
+            }}
+          >
+            {" "}
+            Home{" "}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            align='center'
+            style={{
+              marginBottom: 30,
+              fontSize: 25,
+              fontWeight: "bold",
+              textDecoration: "underline",
+            }}
+          >
+            Virtual Learning and Software Engineering (VLSE)
+          </Typography>
+        </Grid>
         <Grid
           item
           xs={4}
@@ -178,7 +207,7 @@ export default function HomePage() {
 
         <Grid item xs={12} style={{ padding: 50, paddingTop: 15 }}>
           <Typography
-            style={{ marginBottom: 10, fontSize: 25, fontWeight: "bold" }}
+            style={{ marginBottom: 10, fontSize: 23, fontWeight: "bold" }}
           >
             {" "}
             About us

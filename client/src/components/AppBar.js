@@ -8,12 +8,11 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { ReactComponent as Research } from "../assets/research.svg";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
+
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import { Route, Switch, useRouteMatch, withRouter } from "react-router-dom";
-import Home from "../views/Home";
+import { useRouteMatch, withRouter } from "react-router-dom";
 
 //reference for appbar template : https://material-ui.com/components/app-bar/
 function ElevationScroll(props) {
@@ -42,6 +41,7 @@ ElevationScroll.propTypes = {
 };
 
 function ElevateAppBar(props) {
+  const history = props.history;
   let { path, url } = useRouteMatch();
   return (
     <div>
@@ -65,13 +65,22 @@ function ElevateAppBar(props) {
                   style={{
                     fontSize: 44,
                     color: "#233041",
-                    marginLeft: 80,
-                    marginRight: 30,
+                    marginLeft: 70,
+                    marginRight: 20,
                   }}
                 />
-                <Typography style={{ fontSize: 23 }}>
-                  *Academic Research Group Name*
-                </Typography>
+                <Box
+                  style={{
+                    border: "2px solid #fff",
+                    borderRadius: 50,
+                    paddingLeft: 20,
+                    paddingRight: 20,
+                  }}
+                >
+                  <Typography style={{ fontSize: 25, fontWeight: "bolder" }}>
+                    V.L.S.E
+                  </Typography>
+                </Box>
               </Grid>
               <Grid item xs={1}></Grid>
               <Grid
@@ -87,13 +96,48 @@ function ElevateAppBar(props) {
                   color='inherit'
                   aria-label='large outlined primary button group'
                 >
-                  <Button style={{ fontSize: 13 }}>Home</Button>
-                  <Button style={{ fontSize: 13 }}>Projects</Button>
-                  <Button style={{ fontSize: 13 }}>Publications</Button>
-                  <Button style={{ fontSize: 13 }}>Team</Button>
-                  <Button style={{ fontSize: 13 }}>News</Button>
-                  <Button style={{ fontSize: 13 }}>Tools</Button>
-                  <Button style={{ fontSize: 13 }}>Vacancies</Button>
+                  <Button
+                    onClick={() => history.push(`/home`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    Home
+                  </Button>
+                  <Button
+                    onClick={() => history.push(`/publications`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    Publications
+                  </Button>
+                  <Button
+                    onClick={() => history.push(`/publications`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    Projects
+                  </Button>
+                  <Button
+                    onClick={() => history.push(`/home`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    Team
+                  </Button>
+                  <Button
+                    onClick={() => history.push(`/home`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    News
+                  </Button>
+                  <Button
+                    onClick={() => history.push(`/home`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    Tools
+                  </Button>
+                  <Button
+                    onClick={() => history.push(`/home`)}
+                    style={{ fontSize: 13 }}
+                  >
+                    Vacancies
+                  </Button>
                 </ButtonGroup>
               </Grid>
             </Grid>
