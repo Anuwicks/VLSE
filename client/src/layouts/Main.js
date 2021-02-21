@@ -2,6 +2,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Home from "../views/Home";
 import Publications from "../views/Publications";
+import Login from "../views/Login";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Appbar from "../components/AppBar";
 import Footer from "../components/Footer";
@@ -29,6 +30,7 @@ function MainLayout(props) {
             path={`/publications`}
             render={(props) => <Publications />}
           />
+          <Route exact path={`/admin`} render={(props) => <Login />} />
         </Switch>
       </main>
       <Footer />

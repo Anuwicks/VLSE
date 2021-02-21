@@ -1,13 +1,40 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Snackbar } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import Data from "../assets/magnifying.svg";
+import Data from "../assets/coding.svg";
 import Vacancy from "../assets/search.svg";
 import Work from "../assets/working.svg";
 import React from "react";
+import Alert from "@material-ui/lab/Alert";
+import axios from "axios";
 
 export default function HomePage() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+  const [verified, setVerified] = React.useState(false);
+  React.useEffect(() => {
+    axios
+      .get("/api/auth/verify", {
+        headers: {
+          "auth-token": sessionStorage.getItem("tkn"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data === true) {
+          setVerified(true);
+          setOpen(true);
+        } else setVerified(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
       <Grid container>
@@ -261,6 +288,23 @@ export default function HomePage() {
         </Grid>
         <Grid item xs={12}></Grid>
       </Grid>
+
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        open={open}
+        autoHideDuration={7000}
+        onClose={handleClose}
+      >
+        <Alert
+          elevation={6}
+          variant='filled'
+          onClose={handleClose}
+          severity='success'
+        >
+          You are currently logged in as admin, click on the "Admin" button in
+          the footer if you would like to log out.
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

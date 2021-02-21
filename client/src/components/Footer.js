@@ -1,13 +1,10 @@
 import React from "react";
-
-import Toolbar from "@material-ui/core/Toolbar";
+import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-
-import Grid from "@material-ui/core/Grid";
 
 function Footer(props) {
   return (
-    <div>
+    <div style={{ marginTop: 30 }}>
       <Typography
         align='center'
         style={{
@@ -20,6 +17,9 @@ function Footer(props) {
         }}
       >
         Copyright &copy; {new Date().getFullYear()} - VLSE
+      </Typography>
+      <Typography align='center'>
+        <Link href='/admin'>Admin</Link>
       </Typography>
     </div>
   );

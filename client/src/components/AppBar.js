@@ -8,7 +8,7 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { ReactComponent as Research } from "../assets/research.svg";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Box from "@material-ui/core/Box";
-
+import axios from "axios";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -63,16 +63,17 @@ function ElevateAppBar(props) {
                 <SvgIcon
                   component={Research}
                   style={{
-                    fontSize: 44,
+                    fontSize: 60,
                     color: "#233041",
-                    marginLeft: 70,
+                    marginLeft: 100,
                     marginRight: 20,
                   }}
                 />
                 <Box
                   style={{
                     border: "2px solid #fff",
-                    borderRadius: 50,
+
+                    borderRadius: 11,
                     paddingLeft: 20,
                     paddingRight: 20,
                   }}
