@@ -11,7 +11,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddAuthor from "../components/AddAuthor";
-
+import RemoveAuthor from "../components/RemoveAuthor";
 export default function PublicationsPage() {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
@@ -44,6 +44,7 @@ export default function PublicationsPage() {
   }, []);
 
   const [open1, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
 
   return (
     <div>
@@ -187,18 +188,32 @@ export default function PublicationsPage() {
             </Grid>
             <Grid item xs={3} style={{}}>
               {verified ? (
-                <Button
-                  variant='contained'
-                  onClick={() => setOpen(true)}
-                  style={{
-                    background: "#2c9155",
-                    color: "#fff",
-                    marginLeft: 120,
-                    marginTop: 50,
-                  }}
-                >
-                  Add Authors to Search
-                </Button>
+                <div>
+                  <Button
+                    variant='contained'
+                    onClick={() => setOpen(true)}
+                    style={{
+                      background: "#2c9155",
+                      color: "#fff",
+                      marginLeft: 120,
+                      marginTop: 30,
+                    }}
+                  >
+                    Add Authors to Search
+                  </Button>
+                  <Button
+                    variant='contained'
+                    onClick={() => setOpen2(true)}
+                    style={{
+                      background: "#bb3737",
+                      color: "#fff",
+                      marginLeft: 120,
+                      marginTop: 50,
+                    }}
+                  >
+                    Remove Authors From Search
+                  </Button>
+                </div>
               ) : (
                 false
               )}
@@ -208,6 +223,7 @@ export default function PublicationsPage() {
       </Grid>
 
       <AddAuthor open={open1} setOpen={() => setOpen()} />
+      <RemoveAuthor open={open2} setOpen={() => setOpen2()} />
     </div>
   );
 }

@@ -92,6 +92,36 @@ router.post("/add-author", async (req, res) => {
   }
 });
 
+router.post("/remove-author", async (req, res) => {
+  try {
+    let author = req.body.name;
+
+    let message = "";
+    let author_to_remove = author.replace(/\s/g, "+");
+
+    let all_authors = await Authors.findById("603101e90090c5574c425322");
+
+    /* let index = all_authors.indexOf(author) */
+
+    let new_authors = all_authors.authors.filter((authors) => {
+      return authors !== author_to_remove;
+    });
+    all_authors.authors = new_authors;
+
+    try {
+      await Authors.replaceOne(
+        { _id: "603101e90090c5574c425322" },
+        all_authors
+      );
+    } catch {
+      (err) => console.log(err);
+    }
+    res.send(message);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 router.get("/get-authors", async (req, res) => {
   try {
     let all_authors = await Authors.findById("603101e90090c5574c425322");
