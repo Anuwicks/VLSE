@@ -1,6 +1,8 @@
 import express from "express";
 import axios from "axios";
 import Authors from "../models/Authors";
+import verify from "./verifyAdmin";
+import chalk from "chalk";
 
 const router = express.Router();
 
@@ -19,22 +21,30 @@ router.get("/get-publications", async (req, res) => {
         .get(`https://dblp.org/search/publ/api?q=${author}&format=json&c=0`)
         .then((response) => {
           let all_articles = response.data.result.hits.hit;
-          all_articles.map((article) => {
-            if (!article_ids.includes(article["@id"])) {
-              let authors = article.info.authors.author;
-              for (let i = 0; i < authors.length; i++) {
-                let name = authors[i].text;
-                if (
-                  name === author.replace("+", " ") &&
-                  !article_ids.includes(article["@id"])
-                ) {
-                  articles.push(article);
+          try {
+            all_articles.map((article) => {
+              if (!article_ids.includes(article["@id"])) {
+                try {
+                  let authors = article.info.authors.author;
+                  for (let i = 0; i < authors.length; i++) {
+                    let name = authors[i].text;
+                    if (
+                      name === author.replace("+", " ") &&
+                      !article_ids.includes(article["@id"])
+                    ) {
+                      articles.push(article);
+                    }
+                  }
+
+                  article_ids.push(article["@id"]);
+                } catch {
+                  (err) => console.log(chalk.blue(err));
                 }
               }
-
-              article_ids.push(article["@id"]);
-            }
-          });
+            });
+          } catch {
+            (err) => console.log(err);
+          }
         })
     );
   });
@@ -45,8 +55,19 @@ router.get("/get-publications", async (req, res) => {
 });
 
 router.post("/add-author", async (req, res) => {
+  //https://stackoverflow.com/questions/32589197/how-can-i-capitalize-the-first-letter-of-each-word-in-a-string-using-javascript
+  function titleCase(str) {
+    var splitStr = str.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+
+    return splitStr.join(" ");
+  }
   try {
-    let author = req.body.author;
+    let author = req.body.name;
+    author = titleCase(author);
     let message = "";
     author = author.replace(/\s/g, "+");
     let all_authors = await Authors.findById("603101e90090c5574c425322");
@@ -75,10 +96,12 @@ router.get("/get-authors", async (req, res) => {
   try {
     let all_authors = await Authors.findById("603101e90090c5574c425322");
 
-    let response = {};
-    response["authors"] = all_authors.authors;
-
-    res.json(response);
+    let authors_from_db = all_authors.authors;
+    let authors = [];
+    authors_from_db.map((author) => {
+      authors.push(author.replace("+", " "));
+    });
+    res.json(authors);
   } catch (err) {
     res.json({ message: err });
   }

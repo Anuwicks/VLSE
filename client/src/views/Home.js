@@ -23,7 +23,7 @@ export default function HomePage() {
     axios
       .get("/api/auth/verify", {
         headers: {
-          "auth-token": sessionStorage.getItem("tkn"),
+          "auth-token": localStorage.getItem("tkn"),
         },
       })
       .then((res) => {

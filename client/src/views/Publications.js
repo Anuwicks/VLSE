@@ -20,7 +20,6 @@ export default function PublicationsPage() {
     axios
       .get("/api/publications/get-publications", {})
       .then((res) => {
-        console.log(res.data);
         setArticles(res.data.articles);
         setTeam(res.data.authors);
         setLoading(false);
@@ -33,11 +32,10 @@ export default function PublicationsPage() {
     axios
       .get("/api/auth/verify", {
         headers: {
-          "auth-token": sessionStorage.getItem("tkn"),
+          "auth-token": localStorage.getItem("tkn"),
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data === true) {
           setVerified(true);
         } else setVerified(false);

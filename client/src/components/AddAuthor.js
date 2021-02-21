@@ -86,15 +86,31 @@ const initialValues = {
 export default function CustomizedDialogs(props) {
   const classes = useStyles();
 
+  const [authors, setAuthors] = React.useState([]);
   const handleSubmit = (values) => {
-    localStorage.clear();
+    props.setOpen(false);
+
     axios
-      .post("/api/auth/login", values)
-      .then(function (response) {
-        sessionStorage.setItem("tkn", response.headers["auth-token"]);
+      .post("/api/publications/add-author", values)
+
+      .then(() => {
+        window.location.reload();
       })
       .catch((err) => {});
   };
+
+  React.useEffect(() => {
+    axios
+      .get("/api/publications/get-authors", {
+        headers: {
+          "auth-token": localStorage.getItem("tkn"),
+        },
+      })
+      .then((res) => {
+        setAuthors(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleClose = () => {
     props.setOpen(false);
@@ -111,6 +127,9 @@ export default function CustomizedDialogs(props) {
           Add Author
         </DialogTitle>
         <DialogContent dividers>
+          <Typography style={{ fontWeight: "bold" }}>
+            Enter first and last name of author separated by a space
+          </Typography>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             {({ isSubmitting }) => (
               <Form className={classes.form}>
@@ -131,23 +150,29 @@ export default function CustomizedDialogs(props) {
                     <ErrorMessage
                       component='div'
                       style={{ color: "#c5473f" }}
-                      name='password'
+                      name='name'
                     />
                   }
                 />
+                <Typography align='center'>
+                  {" "}
+                  <Button
+                    type='submit'
+                    variant='contained'
+                    color='primary'
+                    style={{
+                      background: "#2c9155",
+                      marginTop: 10,
+                      marginBottom: 20,
+                    }}
+                  >
+                    Add Author
+                  </Button>
+                </Typography>
 
-                <Button
-                  type='submit'
-                  fullWidth
-                  variant='contained'
-                  color='primary'
-                  className={classes.submit}
-                >
-                  Sign In
-                </Button>
                 <Grid
                   style={{
-                    marginBottom: "3em",
+                    marginBottom: "2em",
                     display: "flex",
                     justifyContent: "center",
                   }}
@@ -155,12 +180,14 @@ export default function CustomizedDialogs(props) {
               </Form>
             )}
           </Formik>
+
+          <Typography>Current Authors in search list:</Typography>
+          {authors.map((author) => (
+            <Typography style={{ color: "#037593", fontWeight: "bold" }}>
+              {author}
+            </Typography>
+          ))}
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color='primary'>
-            Save changes
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

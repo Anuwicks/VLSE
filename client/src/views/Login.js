@@ -49,7 +49,7 @@ function SignIn(props) {
     axios
       .get("/api/auth/verify", {
         headers: {
-          "auth-token": sessionStorage.getItem("tkn"),
+          "auth-token": localStorage.getItem("tkn"),
         },
       })
       .then((res) => {
@@ -69,11 +69,10 @@ function SignIn(props) {
   };
 
   const handleSubmit = (values) => {
-    localStorage.clear();
     axios
       .post("/api/auth/login", values)
       .then(function (response) {
-        sessionStorage.setItem("tkn", response.headers["auth-token"]);
+        localStorage.setItem("tkn", response.headers["auth-token"]);
 
         history.push("/home");
       })
@@ -119,7 +118,7 @@ function SignIn(props) {
                   </Typography>
                   <Button
                     onClick={() => {
-                      sessionStorage.clear();
+                      localStorage.clear();
                       setVerified(false);
                     }}
                     variant='contained'
